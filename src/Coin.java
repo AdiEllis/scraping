@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+
 public class Coin {
     private String name;
     private String symbol;
@@ -32,6 +33,7 @@ public class Coin {
             }
         }
     }
+
     public String getName() {
         return name;
     }
@@ -64,4 +66,5 @@ public class Coin {
                 ", price='" + price + '\'' +
                 '}';
     }
+
 }

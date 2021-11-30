@@ -1,21 +1,9 @@
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-import java.io.IOException;
-import java.sql.*;
+import java.util.Timer;
 
 public class Main {
-    public static void main(String[] args) throws SQLException, IOException {
-        Document doc = Jsoup.connect("https://coinmarketcap.com/all/views/all/").get();
-        Elements table = doc.select("table tbody");
-        for (int i = 0; i < 10; i++) {
-            Coin coinToAdd = new Coin(table.select("tbody tr").get(i).select("tr td").get(1).text(),
-                    table.select("tbody tr").get(i).select("tr td").get(2).text(),
-                    table.select("tbody tr").get(i).select("tr td").get(4).text());
-            coinToAdd.save();
-            System.out.println(coinToAdd.getName());
-        }
-
+    public static void main(String[] args) {
+        Timer timer = null;
+        timer.schedule(new InsertCoins(),0,10000);
 
 //        delete table:
 //        Connection con = null;
