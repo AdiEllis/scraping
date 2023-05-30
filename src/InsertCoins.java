@@ -3,7 +3,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.TimerTask;
 
 public class InsertCoins extends TimerTask {
@@ -11,22 +10,22 @@ public class InsertCoins extends TimerTask {
     public void run() {
         Document doc = null;
         try {
-            doc = Jsoup.connect("https://coinmarketcap.com/all/views/all/").get();
+            doc = Jsoup.connect("https://il.investing.com/currencies/").get();
         } catch (IOException e) {
             e.printStackTrace();
         }
         Elements table = doc.select("table tbody");
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 5; i++) {
             Coin coinToAdd = new Coin(table.select("tbody tr").get(i).select("tr td").get(1).text(),
-                    table.select("tbody tr").get(i).select("tr td").get(2).text(),
-                    table.select("tbody tr").get(i).select("tr td").get(4).text());
+                    table.select("tbody tr").get(i).select("tr td").get(3).text(),
+                    table.select("tbody tr").get(i).select("tr td").get(8).text());
             try {
                 coinToAdd.save();
-            } catch (SQLException sqlException) {
-                sqlException.printStackTrace();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
 
-            System.out.println(coinToAdd.getName());
+            System.out.println(coinToAdd);
         }
     }
 }

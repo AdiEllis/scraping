@@ -1,8 +1,9 @@
+import java.io.IOException;
 import java.util.Timer;
 
 public class Main {
-    public static void main(String[] args) {
-        Timer timer = null;
+    public static void main(String[] args) throws IOException {
+        Timer timer = new Timer();
         timer.schedule(new InsertCoins(),0,10000);
 
 //        delete table:

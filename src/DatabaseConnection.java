@@ -18,7 +18,7 @@ public class DatabaseConnection {
 
     public Connection getConnection() throws Exception {
         if (con == null || con.isClosed()) {
-            String url = "jdbc:mysql://localhost:3306/database?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=IST";
+            String url = "jdbc:mysql://localhost:3306/crypto1?useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=IST";
             String driver = "com.mysql.cj.jdbc.Driver";
             String userName = "root";
             String password = "1234";
