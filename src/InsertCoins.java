@@ -16,7 +16,8 @@ public class InsertCoins extends TimerTask {
         }
         Elements table = doc.select("table tbody");
         for (int i = 0; i < 5; i++) {
-            Coin coinToAdd = new Coin(table.select("tbody tr").get(i).select("tr td").get(1).text(),
+            Coin coinToAdd = new Coin(
+                    table.select("tbody tr").get(i).select("tr td").get(1).text(),
                     table.select("tbody tr").get(i).select("tr td").get(3).text(),
                     table.select("tbody tr").get(i).select("tr td").get(8).text());
             try {
